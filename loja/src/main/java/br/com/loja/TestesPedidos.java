@@ -5,6 +5,7 @@ import br.com.loja.pedido.GeraPedido;
 import br.com.loja.pedido.GeraPedidoHandler;
 import br.com.loja.pedido.Pedido;
 import br.com.loja.pedido.acao.EnviarEmailPedido;
+import br.com.loja.pedido.acao.LogDePedido;
 import br.com.loja.pedido.acao.SalvarPedidoNoBancoDeDados;
 
 import java.math.BigDecimal;
@@ -21,8 +22,10 @@ public class TestesPedidos {
 
         GeraPedido geraPedido = new GeraPedido(cliente, valorOrcamento, quantidadeItens);
 
-        GeraPedidoHandler handler = new GeraPedidoHandler(Arrays.asList(new SalvarPedidoNoBancoDeDados(),
-                new EnviarEmailPedido()));
+        GeraPedidoHandler handler = new GeraPedidoHandler(Arrays.asList(
+                new SalvarPedidoNoBancoDeDados(),
+                new EnviarEmailPedido(),
+                new LogDePedido()));
 
         handler.execute(geraPedido);
     }
